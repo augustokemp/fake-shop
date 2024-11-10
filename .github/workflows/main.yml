@@ -8,6 +8,7 @@ on:
 jobs:
   ci:
     runs-on: ubuntu-latest
+    name: ci-job
     steps:
       - name: Autenticar no Docker Hub
         run: echo "Executando Docker login"
@@ -19,6 +20,7 @@ jobs:
         run: echo "Executando Docker push"
   cd:
     runs-on: ubuntu-latest
+    needs: [ci-job]
     steps:
       - name: Autenticar na AWS
         run: echo "Executando AWS configure"
